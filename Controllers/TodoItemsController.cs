@@ -108,7 +108,6 @@ namespace TodoApi.Controllers
 
             return NoContent();
         }
-
         private bool TodoItemExists(long id)
         {
             return _context.TodoItems.Any(e => e.Id == id);
