@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="node_modules/@picocss/pico/css/pico.min.css">
+
+    <title>List of thoughts</title>
+</head>
+
+<body>
+    <h1>List Of Thoughts</h1>
+    <ul id="todo-list"></ul>
+
+    <form id="todo-form">
+        <input type="text" id="todo-name" placeholder="Enter todo item" required>
+        <label>
+            <input type="checkbox" id="todo-complete"> Complete
+        </label>
+        <button type="submit">Add Todo</button>
+    </form>
+
+    <script>
+        async function fetchTodoItems() {
+            try {
+                const response = await fetch('http://localhost:5185/api/TodoItems');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const todoItems = await response.json();
+                const todoList = document.getElementById('todo-list');
+                todoList.innerHTML = ''; // Clear the list before adding items
+
+                todoItems.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${item.name} - ${item.isComplete ? 'Complete' : 'Incomplete'}`;
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.onclick = () => deleteTodoItem(item.id, listItem);
+
+                    listItem.appendChild(deleteButton);
+                    todoList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        }
+
+        async function addTodoItem(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('todo-name').value;
+            const isComplete = document.getElementById('todo-complete').checked;
+
+            const newItem = {
+                name: name,
+                isComplete: isComplete
+            };
+
+            try {
+                const response = await fetch('http://localhost:5185/api/TodoItems', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newItem)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const createdItem = await response.json();
+                const todoList = document.getElementById('todo-list');
+                const listItem = document.createElement('li');
+                listItem.textContent = `${createdItem.name} - ${createdItem.isComplete ? 'Complete' : 'Incomplete'}`;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = () => deleteTodoItem(createdItem.id, listItem);
+
+                listItem.appendChild(deleteButton);
+                todoList.appendChild(listItem);
+
+                // Clear the form
+                document.getElementById('todo-form').reset();
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        }
+
+        async function deleteTodoItem(id, listItem) {
+            try {
+                const response = await fetch(`http://localhost:5185/api/TodoItems/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                listItem.remove();
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        }
+
+        document.getElementById('todo-form').addEventListener('submit', addTodoItem);
+
+        fetchTodoItems();
+    </script>
+</body>
+
+
+</html>
