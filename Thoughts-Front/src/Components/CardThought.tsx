@@ -16,7 +16,6 @@ export default function CardThoughts() {
   const queryClient = useQueryClient(); // Add this line to initialize the queryClient
 
   const deleteMutation = useMutation({
-    // mutationKey: ["thoughts"],
     mutationFn: (id: number) => DeleteThought(id), // Pass the thought ID to the delete function
     onSuccess: () => {
       // Invalidate and refetch the thoughts query to reflect the changes
@@ -33,7 +32,7 @@ export default function CardThoughts() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
       {thoughts?.map((thought) => (
-        <div key={thought.id} className="card bg-base-100 w-96 shadow-xl m-10">
+        <div key={thought.id} className="card bg-base-100 w-96 shadow-xl m-10 ">
           <div className="card-body">
             <h2 className="card-title">
               {thought.title}
@@ -41,10 +40,10 @@ export default function CardThoughts() {
                 {thought.category}
               </div>
             </h2>
-            <p>{thought.content}</p>
+            <p className="overflow-hidden max-h-40">{thought.content}</p>
             <div className="card-actions justify-end">
               <div className="badge badge-outline">
-                {thought.isComplete ? "Completed" : "Incomplete"}
+                {thought.isComplete ? "Completed" : "Author"}
               </div>
               <button className="btn btn-primary">Edit</button>
               <button

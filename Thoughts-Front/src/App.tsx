@@ -5,6 +5,7 @@ import Footer from "./Components/Footer";
 import HeroSection from "./Components/Hero";
 import StoredThoughts from "./Components/StoredThoughts";
 import CardThoughts from "./Components/CardThought";
+import CreateInput from "./Components/CreateInput";
 
 function App() {
   return (
@@ -12,13 +13,7 @@ function App() {
       <NavBar />
       <HeroSection />
 
-      <section className="flex items-center m-10">
-        <div>
-          <StoredThoughts />
-        </div>
-        <div>
-          <StoredThoughts />
-        </div>
+      <section>
         <div>
           <StoredThoughts />
         </div>
@@ -26,6 +21,7 @@ function App() {
       <section className="flex justify-items-center flex-direction-row flex-wrap m-10">
         <CardThoughts />
       </section>
+      <CreateInput />
       <Footer />
     </div>
   );
