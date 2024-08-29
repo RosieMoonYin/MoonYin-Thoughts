@@ -32,22 +32,22 @@ export default function CardThoughts() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
       {thoughts?.map((thought) => (
-        <div key={thought.id} className="card bg-base-100 w-96 shadow-xl m-10 ">
+        <div key={thought.id} className="card bg-base-100 w-96 shadow-xl m-5">
           <div className="card-body">
             <h2 className="card-title">
               {thought.title}
-              <div className="badge badge-secondary ml-2">
-                {thought.category}
-              </div>
+              <div className="badge badge-accent ml-2">{thought.category}</div>
             </h2>
-            <p className="overflow-hidden max-h-40">{thought.content}</p>
+            <p className="overflow-hidden text-slate-300 text-xs max-h-40">
+              {thought.content}
+            </p>
             <div className="card-actions justify-end">
               <div className="badge badge-outline">
                 {thought.isComplete ? "Completed" : "Author"}
               </div>
-              <button className="btn btn-primary">Edit</button>
+              <button className="btn btn-primary px-6 m-2">Edit</button>
               <button
-                className="btn btn-secondary"
+                className="btn btn-secondary btn-neutral m-2"
                 onClick={() => deleteMutation.mutate(thought.id)}
               >
                 Delete
