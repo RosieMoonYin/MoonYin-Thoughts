@@ -21,7 +21,10 @@ function App() {
       <section className="flex justify-items-center flex-direction-row flex-wrap m-10">
         <CardThoughts />
       </section>
-      <CreateInput />
+      <section className="flex align-center justify-center flex-direction-row flex-wrap m-10">
+        <CreateInput />
+      </section>
+
       <Footer />
     </div>
   );
