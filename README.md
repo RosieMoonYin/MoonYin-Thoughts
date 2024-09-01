@@ -17,3 +17,7 @@ A personal space to capture your inspiring thoughts, dreams, and ideas—bringin
 ## ✨ Embrace Your Creativity
 
 Capture your ideas as they come and keep them organized for when inspiration strikes!
+
+## ✨ Credits
+
+<a target="_blank" href="https://icons8.com/icon/65360/read">Book</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
