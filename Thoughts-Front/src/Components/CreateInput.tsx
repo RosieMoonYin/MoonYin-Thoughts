@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import ImageUpload from "./ImageUpload";
 
 export type ThoughtsType = {
   id: number;
@@ -71,6 +72,7 @@ export default function CreateInput() {
 
   return (
     <section className="flex flex-col flex-center w-2/4">
+
       <div className="p-2">
         <textarea
           name="content"
@@ -81,6 +83,9 @@ export default function CreateInput() {
           onChange={handleChange}
         />
       </div>
+
+      <ImageUpload/>
+      
       <div className="p-2">
         <select
           name="category"
