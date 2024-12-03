@@ -2,12 +2,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TodoApi.Models
 {
-    public class ThoughtContext : DbContext
+    public class ThoughtContext(DbContextOptions<ThoughtContext> options) : DbContext(options)
     {
-        public ThoughtContext(DbContextOptions<ThoughtContext> options)
-            : base(options)
-        { }
-        public DbSet<Thought> ThoughtCollection { get; set; }
+        public required DbSet<Thought> ThoughtCollection { get; set; }
 
     } 
 }
