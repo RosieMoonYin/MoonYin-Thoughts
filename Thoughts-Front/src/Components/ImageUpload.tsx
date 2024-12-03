@@ -54,26 +54,22 @@ export default function ImageUpload () {
 
     return (
     <section className="flex-center">
-        <div className="container p-2">
-            <h2>Upload Image Here</h2> 
-            <div className="card">
+        <div className="container p-2"> 
+            <div className="card flex">
                 <form onSubmit = {UploadImg}>
-                <p>
-                    <label>Image:</label>
-                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="image" onChange={handleImgChange} />
-                </p> 
-                <p>
+                
+                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="image" className="textarea textarea-bordered" onChange={handleImgChange} />
                     {
                         isLoading ? ("...Loading image") : (
-                            <button className="btn btn-info" type = "submit">Upload</button>
+                            <button className="btn btn-info btn-m ms-2" type = "submit">Upload</button>
                         )
                     }     
-                </p>
+                
                 </form>
                 <div>
                     <div>
                         {imgPreview && (
-                            <img src={imgPreview} alt="Img preview"/>
+                            <img src={imgPreview} alt="Img preview" width={120} className="p-4"/>
                         )}
                     </div>
                 </div>

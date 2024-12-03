@@ -15,7 +15,8 @@ namespace TodoApi.Controllers
         Id = thought.Id,
         Title = thought.Title,
         Content = thought.Content,
-        Category = thought.Category, 
+        Category = thought.Category,
+        ImageUrl = thought.ImageUrl,
         IsComplete = thought.IsComplete
     };
 
@@ -63,7 +64,8 @@ namespace TodoApi.Controllers
 
             thoughtItem.Title = thoughtDTO.Title;
             thoughtItem.Content = thoughtDTO.Content;  
-            thoughtItem.Category = thoughtDTO.Category;  
+            thoughtItem.Category = thoughtDTO.Category;
+            thoughtItem.ImageUrl = thoughtDTO.ImageUrl;
             thoughtItem.IsComplete = thoughtDTO.IsComplete;
 
             try
@@ -86,6 +88,7 @@ namespace TodoApi.Controllers
                 IsComplete = thoughtDTO.IsComplete,
                 Title = thoughtDTO.Title,
                 Content = thoughtDTO.Content,
+                ImageUrl = thoughtDTO.ImageUrl,
                 Category = thoughtDTO.Category 
             };
 
