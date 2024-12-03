@@ -8,12 +8,15 @@ export default function ImageUpload () {
     const [isLoading, setIsLoading] = useState(false);
     const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET;
 
-    const handleImgChange = (e) => {
-        setJournalImg(e.target.files[0]);
-        setImgPreview(URL.createObjectURL(e.target.files[0]));
+    const handleImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            setJournalImg(e.target.files[0]);
+            setImgPreview(URL.createObjectURL(e.target.files[0]));
+        }
     }
+       
     
-    const UploadImg = async (e: { preventDefault: () => void; }) => {
+    const UploadImg = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsLoading(true);
         try {
