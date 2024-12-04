@@ -3,5 +3,6 @@ export type ThoughtsType = {
   title: string;
   content: string;
   category: string;
+  imageUrl?: string;
   isComplete: boolean;
 };

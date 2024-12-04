@@ -7,6 +7,7 @@ export type ThoughtsType = {
   title: string;
   content: string;
   category: string;
+  imageUrl: string;
   isComplete: boolean;
 };
 
@@ -33,6 +34,7 @@ export default function CreateInput() {
     title: "",
     content: "",
     category: "",
+    imageUrl: "",
     isComplete: false,
   });
 
@@ -43,12 +45,19 @@ export default function CreateInput() {
     onSuccess: (data) => {
       console.log("Success:", data);
       queryClient.invalidateQueries({ queryKey: ["thoughts"] });
-      setFormData({ title: "", content: "", category: "", isComplete: false });
+      setFormData({ title: "", content: "", category: "", imageUrl: "", isComplete: false });
     },
     onError: (error) => {
       console.error("Error:", error);
     },
   });
+
+  const handleImageUrlChange = (url: string) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      imageUrl: url, // Update the imageUrl in the parent state
+    }));
+  };
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -65,6 +74,7 @@ export default function CreateInput() {
   const handleSubmit = async () => {
     try {
       await mutation.mutateAsync(formData);
+      alert(formData.imageUrl);
     } catch (error) {
       console.error(error);
     }
@@ -84,7 +94,7 @@ export default function CreateInput() {
         />
       </div>
 
-      <ImageUpload/>
+      <ImageUpload setImageUrl={handleImageUrlChange}/>
       
       <div className="p-2">
         <select

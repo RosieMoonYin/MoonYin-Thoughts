@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function ImageUpload () {
+export default function ImageUpload ({ setImageUrl }: { setImageUrl: (url: string) => void }) {
 
     const [journalImg, setJournalImg] = useState <File | null>(null);
     const [imgPreview, setImgPreview] = useState <string | null>(null);
@@ -20,7 +20,7 @@ export default function ImageUpload () {
         e.preventDefault();
         setIsLoading(true);
         try {
-            let imgURL;
+            
 
             if (journalImg && (journalImg.type === "image/png" || journalImg.type === "image/jpg" || journalImg.type === "image/jpeg")) 
                 {
@@ -37,9 +37,9 @@ export default function ImageUpload () {
                         }
                     );
                     const imgData = await response.json();
-                    imgURL = imgData.url;
+                    setImageUrl(imgData.url)
             }
-            alert(imgURL);
+            
             console.log(uploadPreset);
         }
 
@@ -47,6 +47,7 @@ export default function ImageUpload () {
             console.log("error uploading image", error);
             setIsLoading(false)
         }
+        setIsLoading(false);
     }
 
 

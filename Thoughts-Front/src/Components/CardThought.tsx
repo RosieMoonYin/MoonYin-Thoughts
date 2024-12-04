@@ -38,6 +38,9 @@ export default function CardThoughts() {
               {thought.title}
               <div className="badge badge-accent ml-2">{thought.category}</div>
             </h2>
+            <p>
+              <img src={thought.imageUrl} width={120}/>
+            </p>
             <p className="overflow-hidden text-slate-300 text-xs max-h-40">
               {thought.content}
             </p>
