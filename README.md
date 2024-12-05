@@ -7,6 +7,7 @@ A personal space to capture your inspiring thoughts, dreams, and ideas—bringin
 - **Front-End:** React, JavaScript, TypesScript
 - **Back-End:** C#, .NET Web API
 - **Database:** SQLite
+- **Containerized Front-End: Docker & Kubernetes 🐳 📦📦📦
 
 ## 🚀 Features
 
