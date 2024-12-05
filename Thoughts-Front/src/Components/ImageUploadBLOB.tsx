@@ -20,7 +20,7 @@ export default function ImageUploadBLOB ({ setImageUrl }: { setImageUrl: (url: s
                 const formData = new FormData();
                 formData.append("file", journalImg);
 
-                const response = await fetch("my_controller_endpoint", {
+                const response = await fetch("my_controller_endpoint!!!", {
                     method: "POST",
                     body: formData,
                 });
