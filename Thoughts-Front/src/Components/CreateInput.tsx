@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import ImageUpload from "./ImageUpload";
+import ImageUpload from "../Utils/ImageUpload";
 
 export type ThoughtsType = {
   id: number;

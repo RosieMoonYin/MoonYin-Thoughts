@@ -3,7 +3,7 @@ import "./App.css";
 import NavBar from "./Components/NavBar";
 import Footer from "./Components/Footer";
 import HeroSection from "./Components/Hero";
-import StoredThoughts from "./Components/StoredThoughts";
+import StoredThoughts from "./Utils/StoredThoughts";
 import CardThoughts from "./Components/CardThought";
 import CreateInput from "./Components/CreateInput";
 

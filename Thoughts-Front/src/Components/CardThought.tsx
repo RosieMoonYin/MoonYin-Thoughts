@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ThoughtsType } from "../Types/ThoughtsType";
 import FetchThoughts from "../Api/Api";
-import DeleteThought from "./Delete";
+import DeleteThought from "../Utils/Delete";
 
 export default function CardThoughts() {
   const {
