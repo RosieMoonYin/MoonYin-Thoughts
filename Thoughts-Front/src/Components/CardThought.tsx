@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ThoughtsType } from "../Types/ThoughtsType";
-import FetchThoughts from "./Api";
+import FetchThoughts from "../Api/Api";
 import DeleteThought from "./Delete";
 
 export default function CardThoughts() {
@@ -13,12 +13,11 @@ export default function CardThoughts() {
     queryFn: FetchThoughts,
   });
 
-  const queryClient = useQueryClient(); // Add this line to initialize the queryClient
+  const queryClient = useQueryClient();
 
   const deleteMutation = useMutation({
-    mutationFn: (id: number) => DeleteThought(id), // Pass the thought ID to the delete function
+    mutationFn: (id: number) => DeleteThought(id), 
     onSuccess: () => {
-      // Invalidate and refetch the thoughts query to reflect the changes
       queryClient.invalidateQueries({ queryKey: ["thoughts"] });
     },
     onError: (error) => {

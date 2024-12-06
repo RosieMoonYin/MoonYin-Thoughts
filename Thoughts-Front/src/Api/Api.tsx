@@ -1,4 +1,4 @@
-import { ThoughtsType } from "../Types/ThoughtsType"; // Import the ThoughtsType from the appropriate file
+import { ThoughtsType } from "../Types/ThoughtsType";
 
 export default async function FetchThoughts(): Promise<ThoughtsType[]> {
   const response = await fetch("http://localhost:5185/api/Thoughts");
